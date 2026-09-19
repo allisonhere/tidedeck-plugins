@@ -9,13 +9,17 @@ In TideDeck: settings (`s`) → **Plugins**, paste a source, press **Install**.
 
 - `https://github.com/allisonhere/tidedeck-plugins#ai-usage` — **AI Usage**
 - `https://github.com/allisonhere/tidedeck-plugins#docker` — **Containers**
-- `https://github.com/allisonhere/tidedeck-plugins#favourites` — **Favourites**
 - `https://github.com/allisonhere/tidedeck-plugins#mail` — **Mail**
 
 An installed plugin starts hidden, so its program does not run until its panel is
 enabled from the panel picker (`w`, space toggles). The directories here are the
 same plugins that ship in TideDeck's `contrib/`, published so they can be
 installed and updated without waiting for an app release.
+
+Everything here is a shell script, which is what makes a plugin installable on its
+own. A panel whose program is compiled - **Favourites** - imports TideDeck's own
+library packages, so it is built inside a checkout and ships with the app; it is
+not listed here because installing it would not be enough to run it.
 
 ## ai-usage
 
@@ -32,22 +36,6 @@ by name or image; `c` copies the matched container's id; zoom shows the image,
 ports, mounts, created time, and command for each container.
 
 Requires `docker` and `jq`.
-
-## favourites
-
-A list of links you keep, and the form that maintains it. `enter` on a row opens
-that link in your browser, `e` opens the form for that entry, and the last row -
-`＋ add a favourite` - opens a blank form, which is there even when the list is
-empty.
-
-Only `http` and `https` links are openable. Anything else is stored, shown and
-marked, but never handed to a browser.
-
-The list is one JSON file -
-`${XDG_DATA_HOME:-~/.local/share}/tidedeck/favourites.json` unless the `path`
-setting says otherwise - so it can be edited by hand as well as by the form.
-
-Requires `xdg-open`.
 
 ## mail
 
